@@ -1,7 +1,7 @@
 depend :remote, :command, :git
 
-set :stages,           [ "live", "staging" ]
-set :default_stage,    "staging"
+set :stages,           [ "live", "staging", "dev" ]
+set :default_stage,    "dev"
 set :stage_dir,        "app/config/deploy"
 require                "capistrano/ext/multistage"
 
@@ -24,7 +24,7 @@ set :dump_assetic_assets, true
 set :composer_options,    "--verbose --prefer-dist --optimize-autoloader --prefer-source"
 set :copy_vendors,        true
 
-# shared files set by stage file (live.rb and staging.rb)
+# shared files set by stage file (live.rb, staging.rb and dev.rb)
 #set :public_children, []
 
 set :model_manager, "doctrine"
