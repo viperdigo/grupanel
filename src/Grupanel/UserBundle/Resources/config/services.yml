@@ -1,0 +1,11 @@
+services:
+  technobord_user.listener.user_listener:
+    class:  Grupanel\UserBundle\Listener\UserListener
+    arguments:
+      - "@security.encoder_factory"
+    tags:
+      - { name: doctrine.event_listener, event: prePersist }
+  technobord_user.controller.flash_message:
+    class: Grupanel\UserBundle\Controller\ServiceController
+#    arguments:
+#      - "@doctrine.orm.entity_manager"

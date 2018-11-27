@@ -27,10 +27,10 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
 
-            /* Bundles Worldplay */
-            new Worldplay\UserBundle\UserBundle(),
-            new Worldplay\BackendBundle\BackendBundle(),
-            new Worldplay\CoreBundle\CoreBundle(),
+            /* Bundles Grupanel */
+            new Grupanel\UserBundle\UserBundle(),
+            new Grupanel\BackendBundle\BackendBundle(),
+            new Grupanel\CoreBundle\CoreBundle(),
 
             new Filter\FilterBundle\FilterBundle()
         );
