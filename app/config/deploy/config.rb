@@ -8,7 +8,7 @@ require                "capistrano/ext/multistage"
 # user set on each stage file
 set :application,     "grupanel"
 set :scm,             :git
-set :repository,      "git@bitbucket.org:viperdigo/#{application}.git"
+set :repository,      "git@github.com:viperdigo/#{application}.git"
 set :deploy_via,      :remote_cache
 
 set :use_sudo,        false
