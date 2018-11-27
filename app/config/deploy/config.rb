@@ -23,6 +23,7 @@ set :interactive_mode,    false
 set :dump_assetic_assets, true
 set :composer_options,    "--verbose --prefer-dist --optimize-autoloader --prefer-source"
 set :copy_vendors,        true
+set :symfony_env, dev
 
 # shared files set by stage file (live.rb, staging.rb and dev.rb)
 #set :public_children, []
