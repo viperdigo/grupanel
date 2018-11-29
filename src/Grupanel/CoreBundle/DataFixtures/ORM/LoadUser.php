@@ -34,24 +34,24 @@ class LoadUser extends AbstractFixture implements ContainerAwareInterface, Order
         $manager->persist($admin);
 
         $admin = new User();
-        $admin->setUsername('tiago');
-        $admin->setPlainPassword('123456');
+        $admin->setUsername('ifreire');
+        $admin->setPlainPassword('ifreire');
         $admin->setIsActive(true);
         $admin->setRoles(array('ROLE_ADMIN'));
-        $admin->setEmail('tiagomascanha@gmail.com');
-        $admin->setName('Tiago Mascanha');
+        $admin->setEmail('ifreire@sabesp.combr');
+        $admin->setName('Ivan Freire');
         $admin->setUserType($adminType);
         $manager->persist($admin);
 
-        $user = new User();
-        $user->setUsername('teste');
-        $user->setPlainPassword('teste');
-        $user->setIsActive(true);
-        $user->setRoles(array('ROLE_USER'));
-        $user->setEmail('teste@gmail.com');
-        $user->setName('Teste (ROLEUSER)');
-        $user->setUserType($operatorType);
-        $manager->persist($user);
+        $admin = new User();
+        $admin->setUsername('lmaranho');
+        $admin->setPlainPassword('lmaranho');
+        $admin->setIsActive(true);
+        $admin->setRoles(array('ROLE_ADMIN'));
+        $admin->setEmail('lmaranho@sabesp.combr');
+        $admin->setName('Lucas Maranho');
+        $admin->setUserType($adminType);
+        $manager->persist($admin);
 
         $manager->flush();
     }
