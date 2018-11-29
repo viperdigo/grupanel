@@ -52,7 +52,18 @@
 
         {% block pageCss %}{% endblock %}
 
-        <style>{% block pageInlineCss %}{% endblock %}</style>
+        <style>
+
+            .page-footer {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+
+            {% block pageInlineCss %}{% endblock %}
+
+        </style>
 
 
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}"/>
