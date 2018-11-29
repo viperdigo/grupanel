@@ -1,5 +1,21 @@
 {% extends '::base.html.twig' %}
 
+{% block pageCss %}
+    <style>
+        .dashboard-card-icon i {
+            float: left;
+            color: #cbd4e0;
+            font-size: 26px;
+            margin-left: 10px;
+            margin-right: 10px;
+            display: inline;
+        }
+        .dashboard-stat{
+            height: 110px;
+        }
+    </style>
+{% endblock %}
+
 {% block bodyClass %}page-header-fixed page-sidebar-closed-hide-logo ppage-sidebar-closed-hide-logo{% endblock %}
 {% block body %}
 
@@ -22,16 +38,6 @@
                 </a>
 
                 <div class="page-top">
-
-                    {#<form method="GET" action="{{ path('customer') }}" class="search-form">#}
-                        {#<div class="input-group">#}
-                            {#<input type="text" name="name" placeholder="{{ "Search customer by name..."|trans }}" class="form-control input-sm">#}
-					{#<span class="input-group-btn">#}
-					{#<a class="btn submit" href="javascript:;"><i class="icon-magnifier"></i></a>#}
-					{#</span>#}
-                        {#</div>#}
-                    {#</form>#}
-
 
                     <div class="top-menu">
                         <ul class="nav navbar-nav pull-right">
@@ -63,21 +69,133 @@
 
         <div class="page-container">
 
-            {#{% block sidebar %}#}
+            {% block content %}
 
-                {#<div class="page-sidebar-wrapper">#}
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a class="dashboard-stat dashboard-stat-v2 blue-madison" href="#">
+                            <div class="visual">
+                                <i class="fa fa-book"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number">
+                                    <span>Informações</span>
+                                </div>
+                                <div class="desc">do Municipio</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a class="dashboard-stat dashboard-stat-v2 blue-madison" href="#">
+                            <div class="visual">
+                                <i class="fa fa-bar-chart-o"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number">
+                                    <span>Sistema</span>
+                                </div>
+                                <div class="desc">de Abastecimento</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a class="dashboard-stat dashboard-stat-v2 blue-madison" href="#">
+                            <div class="visual">
+                                <i style="margin-left: -16px;" class="fa fa-tint"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number">
+                                    <span>Sistema</span>
+                                </div>
+                                <div class="desc">de Esgotamento</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a class="dashboard-stat dashboard-stat-v2 blue-madison" href="#">
+                            <div class="visual">
+                                <i class="fa fa-globe"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number">
+                                    <span>Grandes</span></div>
+                                <div class="desc">Clientes</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
-                    {#<div class="page-sidebar navbar-collapse collapse">#}
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a class="dashboard-stat dashboard-stat-v2 blue-madison" href="#">
+                            <div class="visual">
+                                <i class="fa fa-wrench"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number">
+                                    <span>Força</span>
+                                </div>
+                                <div class="desc">de Trabalho</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a class="dashboard-stat dashboard-stat-v2 blue-madison" href="#">
+                            <div class="visual">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number">
+                                    <span>Clientes</span>
+                                </div>
+                                <div class="desc">&nbsp;</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a class="dashboard-stat dashboard-stat-v2 blue-madison" href="#">
+                            <div class="visual">
+                                <i class="fa fa-line-chart"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number">
+                                    <span>Faturamento</span>
+                                </div>
+                                <div class="desc">e Arrecadação</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a class="dashboard-stat dashboard-stat-v2 blue-madison" href="#">
+                            <div class="visual">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number">
+                                    <span>Perdas</span></div>
+                                <div class="desc">&nbsp;</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
-                        {#{{ knp_menu_render('BackendBundle:Builder:sideBar', {'ancestorClass':'active','currentClass': 'active', 'template': '::sidebar.html.twig'}) }}#}
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <a class="dashboard-stat dashboard-stat-v2 blue-madison" href="#">
+                            <div class="visual">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number">
+                                    <span>Ativos</span>
+                                </div>
+                                <div class="desc">&nbsp;</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
-                    {#</div>#}
-
-                {#</div>#}
-
-            {#{% endblock %}#}
-
-            {% block content %}{% endblock %}
+            {% endblock %}
 
         </div>
 
