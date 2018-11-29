@@ -4,41 +4,274 @@
 
 {% block contentBody %}
 
-    <div class="page-head">
-
-        <div class="page-title">
-            <h1>Projeto Guarulhos
-                <small>Informações sobre a integração de Guarulhos à Sabesp</small>
-            </h1>
-        </div>
-
-    </div>
-
     <div class="row">
         <div class="col-md-12">
+            <!-- BEGIN PROFILE SIDEBAR -->
+            <div class="profile-sidebar">
+                <!-- PORTLET MAIN -->
+                <div class="portlet light profile-sidebar-portlet bordered">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic">
+                        <img src="../assets/pages/media/profile/profile_user.jpg" class="img-responsive" alt=""> </div>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name"> Marcus Doe </div>
+                        <div class="profile-usertitle-job"> Developer </div>
+                    </div>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR BUTTONS -->
+                    <div class="profile-userbuttons">
+                        <button type="button" class="btn btn-circle green btn-sm">Follow</button>
+                        <button type="button" class="btn btn-circle red btn-sm">Message</button>
+                    </div>
+                    <!-- END SIDEBAR BUTTONS -->
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="app_ticket.html">
+                                    <i class="icon-home"></i> Ticket List </a>
+                            </li>
+                            <li>
+                                <a href="app_ticket_staff.html">
+                                    <i class="icon-settings"></i> Support Staff </a>
+                            </li>
+                            <li>
+                                <a href="app_ticket_config.html">
+                                    <i class="icon-info"></i> Configurations </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END MENU -->
+                </div>
+                <!-- END PORTLET MAIN -->
+                <!-- PORTLET MAIN -->
+                <div class="portlet light bordered">
+                    <!-- STAT -->
+                    <div class="row list-separated profile-stat">
+                        <div class="col-md-4 col-sm-4 col-xs-6">
+                            <div class="uppercase profile-stat-title"> 37 </div>
+                            <div class="uppercase profile-stat-text"> New </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-6">
+                            <div class="uppercase profile-stat-title"> 51 </div>
+                            <div class="uppercase profile-stat-text"> Processed </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-6">
+                            <div class="uppercase profile-stat-title"> 61 </div>
+                            <div class="uppercase profile-stat-text"> Completed </div>
+                        </div>
+                    </div>
+                    <!-- END STAT -->
+                    <div>
+                        <h4 class="profile-desc-title">About Marcus Doe</h4>
+                        <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
+                        <div class="margin-top-20 profile-desc-link">
+                            <i class="fa fa-globe"></i>
+                            <a href="http://www.keenthemes.com">www.keenthemes.com</a>
+                        </div>
+                        <div class="margin-top-20 profile-desc-link">
+                            <i class="fa fa-twitter"></i>
+                            <a href="http://www.twitter.com/keenthemes/">@keenthemes</a>
+                        </div>
+                        <div class="margin-top-20 profile-desc-link">
+                            <i class="fa fa-facebook"></i>
+                            <a href="http://www.facebook.com/keenthemes/">keenthemes</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- END PORTLET MAIN -->
+            </div>
+            <!-- END BEGIN PROFILE SIDEBAR -->
+            <!-- BEGIN TICKET LIST CONTENT -->
+            <div class="app-ticket app-ticket-list">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portlet light bordered">
+                            <div class="portlet-title tabbable-line">
+                                <div class="caption caption-md">
+                                    <i class="icon-globe theme-font hide"></i>
+                                    <span class="caption-subject font-blue-madison bold uppercase">Ticket List</span>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="table-toolbar">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="btn-group">
+                                                <button id="sample_editable_1_new" class="btn sbold green"> Add New
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="btn-group pull-right">
+                                                <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                                                    <i class="fa fa-angle-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <li>
+                                                        <a href="javascript:;">
+                                                            <i class="fa fa-print"></i> Print </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;">
+                                                            <i class="fa fa-file-pdf-o"></i> Save as PDF </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;">
+                                                            <i class="fa fa-file-excel-o"></i> Export to Excel </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="sample_1_wrapper" class="dataTables_wrapper no-footer"><div class="row"><div class="col-md-6 col-sm-6"><div class="dataTables_length" id="sample_1_length"><label>Show <select name="sample_1_length" aria-controls="sample_1" class="form-control input-sm input-xsmall input-inline"><option value="5">5</option><option value="15">15</option><option value="20">20</option><option value="-1">All</option></select></label></div></div><div class="col-md-6 col-sm-6"><div id="sample_1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm input-small input-inline" placeholder="" aria-controls="sample_1"></label></div></div></div><div class="table-scrollable"><table class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                                            <thead>
+                                            <tr role="row"><th class="sorting_disabled" rowspan="1" colspan="1" aria-label="
 
 
-            <div class="portlet-body custom-table">
 
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>{{ "Customer"|trans }}</th>
-                            <th>{{ "Name"|trans }}</th>
-                            <th>{{ "Balance"|trans }}</th>
-                            <th>{{ "LastPayment"|trans }}</th>
-                            <th>{{ "Actions"|trans }}</th>
-                        </tr>
-                        </thead>
-                    </table>
+
+                                                            " style="width: 40px;">
+                                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                        <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes">
+                                                        <span></span>
+                                                    </label>
+                                                </th><th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label=" ID # : activate to sort column descending" style="width: 28px;"> ID # </th><th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Title : activate to sort column ascending" style="width: 64px;"> Title </th><th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Cust. Name : activate to sort column ascending" style="width: 79px;"> Cust. Name </th><th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Cust. Email : activate to sort column ascending" style="width: 114px;"> Cust. Email </th><th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Date/Time : activate to sort column ascending" style="width: 71px;"> Date/Time </th><th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Assigned To : activate to sort column ascending" style="width: 81px;"> Assigned To </th><th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Status : activate to sort column ascending" style="width: 50px;"> Status </th></tr>
+                                            </thead>
+                                            <tbody>
+
+
+
+
+
+
+
+
+
+
+                                            <tr class="gradeX odd" role="row">
+                                                <td>
+                                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                        <input type="checkbox" class="checkboxes" value="1">
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td class="sorting_1">
+                                                    <a href="app_ticket_details.html">1123</a>
+                                                </td>
+                                                <td>
+                                                    <a href="app_ticket_details.html">Changing Colors</a>
+                                                </td>
+                                                <td> Jane </td>
+                                                <td>
+                                                    <a href="mailto:customer@gmail.com"> customer@gmail.com </a>
+                                                </td>
+                                                <td class="center"> 10/12/15 1:45pm </td>
+                                                <td> Hugh Jackman </td>
+                                                <td>
+                                                    <span class="label label-sm label-warning"> New </span>
+                                                </td>
+                                            </tr><tr class="gradeX even" role="row">
+                                                <td>
+                                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                        <input type="checkbox" class="checkboxes" value="1">
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td class="sorting_1">
+                                                    <a href="app_ticket_details.html">1134</a>
+                                                </td>
+                                                <td>
+                                                    <a href="app_ticket_details.html">Modals popup customization</a>
+                                                </td>
+                                                <td> Randy </td>
+                                                <td>
+                                                    <a href="mailto:customer@gmail.com"> customer@gmail.com </a>
+                                                </td>
+                                                <td class="center"> 10/12/15 1:45pm </td>
+                                                <td> Marcus Doe </td>
+                                                <td>
+                                                    <span class="label label-sm label-info"> Processed </span>
+                                                </td>
+                                            </tr><tr class="gradeX odd" role="row">
+                                                <td>
+                                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                        <input type="checkbox" class="checkboxes" value="1">
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td class="sorting_1">
+                                                    <a href="app_ticket_details.html">1144</a>
+                                                </td>
+                                                <td>
+                                                    <a href="app_ticket_details.html">Form Input styling</a>
+                                                </td>
+                                                <td> Samantha </td>
+                                                <td>
+                                                    <a href="mailto:customer@gmail.com"> customer@gmail.com </a>
+                                                </td>
+                                                <td class="center"> 10/12/15 1:45pm </td>
+                                                <td> Marcus Doe </td>
+                                                <td>
+                                                    <span class="label label-sm label-success"> Completed </span>
+                                                </td>
+                                            </tr><tr class="gradeX even" role="row">
+                                                <td>
+                                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                        <input type="checkbox" class="checkboxes" value="1">
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td class="sorting_1">
+                                                    <a href="app_ticket_details.html">1243</a>
+                                                </td>
+                                                <td>
+                                                    <a href="app_ticket_details.html">Counter skipping numbers</a>
+                                                </td>
+                                                <td> Daniel </td>
+                                                <td>
+                                                    <a href="mailto:customer@gmail.com"> customer@gmail.com </a>
+                                                </td>
+                                                <td class="center"> 10/12/15 1:45pm </td>
+                                                <td> Marcus Doe </td>
+                                                <td>
+                                                    <span class="label label-sm label-default"> Pending </span>
+                                                </td>
+                                            </tr><tr class="gradeX odd" role="row">
+                                                <td>
+                                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                                        <input type="checkbox" class="checkboxes" value="1">
+                                                        <span></span>
+                                                    </label>
+                                                </td>
+                                                <td class="sorting_1">
+                                                    <a href="app_ticket_details.html">1276</a>
+                                                </td>
+                                                <td>
+                                                    <a href="app_ticket_details.html">Menu not working</a>
+                                                </td>
+                                                <td> Billy </td>
+                                                <td>
+                                                    <a href="mailto:customer@gmail.com"> customer@gmail.com </a>
+                                                </td>
+                                                <td class="center"> 10/12/15 1:45pm </td>
+                                                <td> Hugh Jackman </td>
+                                                <td>
+                                                    <span class="label label-sm label-default"> Pending </span>
+                                                </td>
+                                            </tr></tbody>
+                                        </table></div><div class="row"><div class="col-md-5 col-sm-5"><div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite">Showing 1 to 5 of 10 records</div></div><div class="col-md-7 col-sm-7"><div class="dataTables_paginate paging_bootstrap_full_number" id="sample_1_paginate"><ul class="pagination" style="visibility: visible;"><li class="prev disabled"><a href="#" title="First"><i class="fa fa-angle-double-left"></i></a></li><li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li><li class="next"><a href="#" title="Last"><i class="fa fa-angle-double-right"></i></a></li></ul></div></div></div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
+            <!-- END PROFILE CONTENT -->
         </div>
-
     </div>
-
 
 {% endblock %}
