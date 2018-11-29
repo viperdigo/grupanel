@@ -50,4 +50,28 @@
         border: 1px solid #e1e1e1 !important;
         background: white;
     }
+
+    .page-footer {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    .dashboard-card-icon i {
+        float: left;
+        color: #cbd4e0;
+        font-size: 26px;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: inline;
+    }
+
+    .dashboard-stat {
+        height: 110px;
+    }
+
+    .page-content-wrapper .page-content {
+        margin-left: 0px;
+    }
 }
