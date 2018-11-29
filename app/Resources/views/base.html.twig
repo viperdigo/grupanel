@@ -62,26 +62,11 @@
 </head>
 <body class="{% block bodyClass %}{% endblock %}">
 
-{% block body %}
-    {% block copyright %}
-        <div class="page-footer">
-            <div class="page-footer-inner">
-                2018 &copy; GRU Panel by Rodrigo Alfieri Desenvolvimento.
-            </div>
-            <div class="scroll-to-top">
-                <i class="icon-arrow-up"></i>
-            </div>
-        </div>
-    {% endblock %}
-{% endblock %}
+{% block body %}{% endblock %}
 
 {#<body class="page-header-fixed page-sidebar-closed-hide-logo ppage-sidebar-closed-hide-logo">#}
 
 {% block footScripts %}
-
-    {# Label Printer Writer 450 #}
-    <script src="http://labelwriter.com/software/dls/sdk/js/DYMO.Label.Framework.latest.js" type="text/javascript"
-            charset="UTF-8"></script>
 
     <!--[if lt IE 9]>
     <script src="{{ asset('bundles/backend/metronic/assets/global/plugins/respond.min.js') }}"
@@ -152,6 +137,17 @@
 
     {% endblock %}
 
+{% endblock %}
+
+{% block copyright %}
+    <div class="page-footer">
+        <div class="page-footer-inner">
+            2018 &copy; GRU Panel by Rodrigo Alfieri Desenvolvimento.
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+    </div>
 {% endblock %}
 
 </body>
