@@ -1,0 +1,44 @@
+{% extends '::content.html.twig' %}
+
+{% block contentTitle %}{{ "Information City"|trans }}{% endblock %}
+
+{% block contentBody %}
+
+    <div class="page-head">
+
+        <div class="page-title">
+            <h1>Projeto Guarulhos
+                <small>Informações sobre a integração de Guarulhos à Sabesp</small>
+            </h1>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+            <div class="portlet-body custom-table">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>{{ "Customer"|trans }}</th>
+                            <th>{{ "Name"|trans }}</th>
+                            <th>{{ "Balance"|trans }}</th>
+                            <th>{{ "LastPayment"|trans }}</th>
+                            <th>{{ "Actions"|trans }}</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

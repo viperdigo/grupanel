@@ -19,7 +19,7 @@ class HomeController extends Controller
     {
 
         if ($this->getUser())
-            return $this->render('::layout.html.twig');
+            return $this->render('@Backend/Home/dashboard.html.twig');
         else
             return $this->redirect($this->generateUrl('login'));
     }
