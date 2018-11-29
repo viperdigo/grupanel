@@ -70,8 +70,8 @@ class LoadUser extends AbstractFixture implements ContainerAwareInterface, Order
 
     /**
      * Get the order of this fixture
-     *
-     * @return integer
+     *integer
+     * @return
      */
     public function getOrder()
     {
