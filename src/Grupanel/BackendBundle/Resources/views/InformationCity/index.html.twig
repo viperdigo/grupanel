@@ -1,52 +1,70 @@
 {% extends '::content.html.twig' %}
 
+{% block pageCss %}
+    <style>
+        .xpto {
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            padding-left: 0;
+            padding-right: 0;
+            font-size: 60px;
+            border: 1px solid red;
+        }
+    </style>
+{% endblock %}
+
 {% block contentTitle %}{{ "Information City"|trans }}{% endblock %}
 
 {% block contentBody %}
 
     <div class="portlet light">
-        <!-- STAT -->
         <div class="row list-separated profile-stat">
-            <div class="col-md-4 col-sm-4 col-xs-6">
-                <div class="uppercase profile-stat-title">
-                    37
-                </div>
+            <div class="col-md-3 col-sm-4 col-xs-6">
                 <div class="uppercase profile-stat-text">
-                    Projects
+                    Fundação
+                </div>
+                <div class="uppercase profile-stat-title">
+                    29/05/1487
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-6">
-                <div class="uppercase profile-stat-title">
-                    51
-                </div>
+            <div class="col-md-3 col-sm-4 col-xs-6">
                 <div class="uppercase profile-stat-text">
-                    Tasks
+                    Aniversário
+                </div>
+                <div class="uppercase profile-stat-title">
+                    29/05/1990
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-6">
-                <div class="uppercase profile-stat-title">
-                    61
-                </div>
+            <div class="col-md-3 col-sm-4 col-xs-6">
                 <div class="uppercase profile-stat-text">
-                    Uploads
+                    Área
+                </div>
+                <div class="uppercase profile-stat-title">
+                    10974573487,03Km
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6">
+                <div class="uppercase profile-stat-text">
+                    Populalação
+                </div>
+                <div class="uppercase profile-stat-title">
+                    680.000
                 </div>
             </div>
         </div>
-        <!-- END STAT -->
         <div>
-            <h4 class="profile-desc-title">About Marcus Doe</h4>
-            <span class="profile-desc-text"> Lorem ipsum dolor sit amet diam nonummy nibh dolore. </span>
-            <div class="margin-top-20 profile-desc-link">
-                <i class="fa fa-globe"></i>
-                <a href="http://www.keenthemes.com">www.keenthemes.com</a>
-            </div>
-            <div class="margin-top-20 profile-desc-link">
-                <i class="fa fa-twitter"></i>
-                <a href="http://www.twitter.com/keenthemes/">@keenthemes</a>
-            </div>
-            <div class="margin-top-20 profile-desc-link">
-                <i class="fa fa-facebook"></i>
-                <a href="http://www.facebook.com/keenthemes/">keenthemes</a>
+            <h4 class="profile-desc-title">Outras Informações</h4>
+            <span class="profile-desc-text">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</span>
+        </div>
+    </div>
+
+    <div class="portlet light portlet-fit bordered">
+        <div class="portlet-body">
+            <div class="row">
+                <a href="{{ path() }}" class="btn btn-circle btn-icon-only green pull-right xpto">
+                    <i class="fa fa-twitter"></i>
+                </a>
             </div>
         </div>
     </div>
