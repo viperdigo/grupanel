@@ -126,7 +126,9 @@
     'bundles/backend/metronic/assets/global/scripts/metronic.js'
     'bundles/backend/metronic/assets/admin/layout4/scripts/layout.js'
     'bundles/backend/metronic/assets/admin/pages/scripts/custom.js'
-    'bundles/backend/js/PrintLabel.js' %}
+    'bundles/backend/metronic/assets/global/plugins/jquery-mixitup/jquery.mixitup.min.js'
+    'bundles/backend/metronic/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js'
+    %}
     <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
 
@@ -138,6 +140,7 @@
             Layout.init();
             ComponentsPickers.init();
             Custom.init();
+            Portfolio.init();
         });
 
     </script>
