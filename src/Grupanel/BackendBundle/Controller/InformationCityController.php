@@ -60,6 +60,22 @@ class InformationCityController extends Controller
 //        );
     }
 
+	/**
+	 * @Route("/photos", name="information_city_photos")
+	 * @Method("GET")
+	 * @Template()
+	 */
+	public function photosAction(Request $request)
+	{
+//		$em = $this->getDoctrine()->getManager();
+//		$customer = $em->getRepository('CoreBundle:Customer')->find($id);
+//
+//
+//		return array(
+//			'customer' => $customer,
+//		);
+	}
+
     /**
      * @Route("/{id}/show", name="customer_show")
      * @Method("GET")

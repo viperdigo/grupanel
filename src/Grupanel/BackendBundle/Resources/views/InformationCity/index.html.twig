@@ -2,14 +2,18 @@
 
 {% block pageCss %}
     <style>
-        .xpto {
+        .btn-icon-only {
             height: 100px;
             width: 100px;
             text-align: center;
+            font-size: 60px;
+        }
+
+        .btn-icon-only .icon {
+            display: inline;
             padding-left: 0;
             padding-right: 0;
             font-size: 60px;
-            border: 1px solid red;
         }
     </style>
 {% endblock %}
@@ -62,9 +66,17 @@
     <div class="portlet light portlet-fit bordered">
         <div class="portlet-body">
             <div class="row">
-                <a href="{{ path() }}" class="btn btn-circle btn-icon-only green pull-right xpto">
-                    <i class="fa fa-twitter"></i>
-                </a>
+                <div class="col-md-push-5 col-sm-2 col-xs-6">
+                    <a href="{{ '' }}" class="btn btn-circle btn-icon-only blue pull-right">
+                        <i class="fa fa-map-marker icon"></i>
+                    </a>
+                </div>
+
+                <div class="col-md-3 col-sm-2 col-xs-6">
+                    <a href="{{ path('information_city_photos') }}" class="btn btn-circle btn-icon-only blue pull-right">
+                        <i class="fa fa-photo icon"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

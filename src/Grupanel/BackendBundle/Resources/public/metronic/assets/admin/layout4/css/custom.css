@@ -51,12 +51,12 @@
         background: white;
     }
 
-    .page-footer {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-    }
+    /*.page-footer {*/
+        /*position: absolute;*/
+        /*right: 0;*/
+        /*bottom: 0;*/
+        /*left: 0;*/
+    /*}*/
 
     .dashboard-card-icon i {
         float: left;
