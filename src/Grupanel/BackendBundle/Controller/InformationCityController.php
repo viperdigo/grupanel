@@ -64,23 +64,35 @@ class InformationCityController extends Controller
 	 */
 	public function mapsAction(Request $request)
 	{
-		$appPath = $this->container->getParameter('kernel.root_dir');
-		$kmlFileTest = realpath($appPath . '/../web/');
 
-		$kmlLayer = new GeoJsonLayer('http://grupanel-dev.com/app_dev.php/uploads/maps/setor_beneficiado.json');
+//		$appPath = $this->container->getParameter('kernel.root_dir');
+//		$informationCityPhotosPath = realpath($appPath . '/../web/bundles/backend/img/information_city_photos');
+//
+//		$finder = new Finder();
+//		$finder->files()->in($informationCityPhotosPath);
+//
+//		foreach ($finder as $file) {
+//			$photosPath[] = $file->getRelativePathname();
+//		}
+//
+//		$appPath = $this->container->getParameter('kernel.root_dir');
+//		$kmlFileTest = realpath($appPath . '/../web/');
+//
+//		$kmlLayer = new KmlLayer('https://www.google.com/maps/d/u/0/edit?mid=1O2eruOrIdLR7VUVL59v0Ye0QBvaJ4UqX&ll=-23.39105713778268%2C-46.45703450000002&z=12');
 //		$kmlLayer->setVariable('kml_layer');
+//		$kmlLayer->setOption()
 //		$kmlLayer->setUrl($kmlFileTest);
 
-		$map = new Map();
-		$map->getLayerManager()->addGeoJsonLayer($kmlLayer);
-		$mapHelper = MapHelperBuilder::create()->build();
-		$apiHelper = ApiHelperBuilder::create()
-			->setKey('AIzaSyCwYLCJIsEjKBlxh-tdqnyUqzef7nD6egg')
-			->build();
-
-		return array(
-			'api' => $apiHelper->render(array($map)),
-			'map' => $mapHelper->render($map),
-		);
+//		$map = new Map();
+//		$map->getLayerManager()->addKmlLayer($kmlLayer);
+//		$mapHelper = MapHelperBuilder::create()->build();
+//		$apiHelper = ApiHelperBuilder::create()
+//			->setKey('AIzaSyCwYLCJIsEjKBlxh-tdqnyUqzef7nD6egg')
+//			->build();
+//
+//		return array(
+//			'api' => $apiHelper->render(array($map)),
+//			'map' => $mapHelper->render($map),
+//		);
 	}
 }

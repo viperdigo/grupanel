@@ -17,3 +17,4 @@ parameters:
     compass_bin: /usr/local/bin/compass
     doctrine_memcached_host: 127.0.0.1
     doctrine_memcached_port: 11211
+    media_directory: '%kernel.root_dir%/../web/uploads'
