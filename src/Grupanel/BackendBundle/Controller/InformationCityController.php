@@ -2,12 +2,21 @@
 
 namespace Grupanel\BackendBundle\Controller;
 
+use Ivory\GoogleMap\Base\Coordinate;
+use Ivory\GoogleMap\Helper\Builder\ApiHelperBuilder;
+use Ivory\GoogleMap\Helper\Builder\MapHelperBuilder;
+use Ivory\GoogleMap\Layer\GeoJsonLayer;
+use Ivory\GoogleMap\Layer\KmlLayer;
+use Ivory\GoogleMap\Map;
+use Ivory\GoogleMap\Overlay\Marker;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 /**
  * Information City.
@@ -22,7 +31,9 @@ class InformationCityController extends Controller
 	 * @Method("GET")
 	 * @Template()
 	 */
-	public function indexAction(Request $request){}
+	public function indexAction(Request $request)
+	{
+	}
 
 	/**
 	 * @Route("/photos", name="information_city_photos")
@@ -51,6 +62,25 @@ class InformationCityController extends Controller
 	 * @Method("GET")
 	 * @Template()
 	 */
-	public function mapsAction(Request $request){}
+	public function mapsAction(Request $request)
+	{
+		$appPath = $this->container->getParameter('kernel.root_dir');
+		$kmlFileTest = realpath($appPath . '/../web/');
 
+		$kmlLayer = new GeoJsonLayer('http://grupanel-dev.com/app_dev.php/uploads/maps/setor_beneficiado.json');
+//		$kmlLayer->setVariable('kml_layer');
+//		$kmlLayer->setUrl($kmlFileTest);
+
+		$map = new Map();
+		$map->getLayerManager()->addGeoJsonLayer($kmlLayer);
+		$mapHelper = MapHelperBuilder::create()->build();
+		$apiHelper = ApiHelperBuilder::create()
+			->setKey('AIzaSyCwYLCJIsEjKBlxh-tdqnyUqzef7nD6egg')
+			->build();
+
+		return array(
+			'api' => $apiHelper->render(array($map)),
+			'map' => $mapHelper->render($map),
+		);
+	}
 }
