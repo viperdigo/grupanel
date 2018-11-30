@@ -46,7 +46,11 @@
     "knplabs/knp-menu-bundle": "~2",
     "knplabs/knp-paginator-bundle": "2.4.*",
     "knplabs/knp-snappy-bundle": "dev-master",
-    "filter/filter-bundle" : "dev-master"
+    "filter/filter-bundle" : "dev-master",
+    "egeloen/google-map": "^2.0",
+    "php-http/guzzle6-adapter": "^1.1",
+    "php-http/message": "^1.7",
+    "egeloen/serializer": "^1.0"
   },
   "scripts": {
     "post-install-cmd": [

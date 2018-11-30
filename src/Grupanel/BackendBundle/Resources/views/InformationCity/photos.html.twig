@@ -1,61 +1,28 @@
 {% extends '::content.html.twig' %}
 
-{% block pageCss %}
-    <style>
-        .btn-icon-only {
-            height: 100px;
-            width: 100px;
-            text-align: center;
-            font-size: 60px;
-        }
-
-        .btn-icon-only .icon {
-            display: inline;
-            padding-left: 0;
-            padding-right: 0;
-            font-size: 60px;
-        }
-    </style>
-{% endblock %}
-
 {% block contentTitle %}{{ "Informações do Município - Fotos" }}{% endblock %}
 
 {% block contentBody %}
 
-    <div class="portfolio-content portfolio-4">
-        <div id="js-filters-full-width" class="cbp-l-filters-alignCenter"></div>
-        <div id="js-grid-full-width" class="cbp cbp-caption-active cbp-caption-zoom cbp-ready" style="height: 1557px;">
-            <div class="cbp-wrapper-outer">
-                <div class="cbp-wrapper">
-                    <div class="cbp-item identity logos" style="width: 346px; left: 0px; top: 0px;">
-                        <div class="cbp-item-wrapper">
-                            <a href="{{ asset('bundles/backend/img/information_city_photos/guarulhos1.jpg') }}" class="cbp-caption cbp-lightbox"
-                               data-title="Dashboard<br>by Paul Flavius Nechita">
-                                <div class="cbp-caption-defaultWrap">
-                                    <img src="{{ asset('bundles/backend/img/information_city_photos/guarulhos1.jpg') }}"
-                                         alt=""></div>
-                                <div class="cbp-caption-activeWrap">
-                                    <div class="cbp-l-caption-alignLeft">
-                                        <div class="cbp-l-caption-body">
-                                            <div class="cbp-l-caption-title">Dashboard</div>
-                                            <div class="cbp-l-caption-desc">by Paul Flavius Nechita</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+    <ul class="mix-filter"></ul>
+
+    <div class="row mix-grid">
+
+        {% for photo in photos %}
+
+            <div class="col-md-4 col-sm-4 mix category_1 mix_all" style="height: 300px; width: 300px; display: block; opacity: 1">
+                <div class="mix-inner">
+                    <a class="fancybox-button"
+                       href="{{ asset('bundles/backend/img/information_city_photos/' ~ photo ) }}"
+                        data-rel="fancybox-button">
+                        <img class="img-responsive" style="height: 300px; width: 300px;"
+                             src="{{ asset('bundles/backend/img/information_city_photos/' ~ photo ) }}" alt="">
+                    </a>
                 </div>
             </div>
-        </div>
-        <div id="js-loadMore-full-width" class="cbp-l-loadMore-text">
-            <a href="../assets/global/plugins/cubeportfolio/ajax/loadMore4.html"
-               class="cbp-l-loadMore-link btn cbp-l-loadMore-loading" rel="nofollow">
-                <span class="cbp-l-loadMore-defaultText">LOAD MORE</span>
-                <span class="cbp-l-loadMore-loadingText">LOADING...</span>
-                <span class="cbp-l-loadMore-noMoreLoading">NO MORE WORKS</span>
-            </a>
-        </div>
+
+        {% endfor %}
+
     </div>
 
 {% endblock %}
