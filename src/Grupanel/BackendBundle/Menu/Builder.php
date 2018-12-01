@@ -4,7 +4,7 @@ namespace Grupanel\BackendBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpFoundation\Request;
 
 class Builder extends ContainerAware
 {
