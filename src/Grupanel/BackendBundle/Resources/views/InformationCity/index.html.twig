@@ -15,51 +15,97 @@
             padding-right: 0;
             font-size: 60px;
         }
+
+        .meet-our-team h3 {
+            text-align: center;
+            margin-bottom: 0;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+
+        .meet-our-team small {
+            display: block;
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .meet-our-team .team-info {
+            text-align: center;
+            padding: 10px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
     </style>
 {% endblock %}
 
-{% block contentTitle %}{{ "Information City"|trans }}{% endblock %}
+{% block contentTitle %}{{ "Information City"|trans }}
+
+    {{ knp_menu_render('breadcrumb',{'currentAsLink':false}) }}
+
+{% endblock %}
 
 {% block contentBody %}
 
-    <div class="portlet light">
-        <div class="row list-separated profile-stat">
-            <div class="col-md-3 col-sm-4 col-xs-6">
-                <div class="uppercase profile-stat-text">
-                    Fundação
-                </div>
-                <div class="uppercase profile-stat-title">
-                    29/05/1487
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6">
-                <div class="uppercase profile-stat-text">
-                    Aniversário
-                </div>
-                <div class="uppercase profile-stat-title">
-                    29/05/1990
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6">
-                <div class="uppercase profile-stat-text">
-                    Área
-                </div>
-                <div class="uppercase profile-stat-title">
-                    10974573487,03Km
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-6">
-                <div class="uppercase profile-stat-text">
-                    Populalação
-                </div>
-                <div class="uppercase profile-stat-title">
-                    680.000
+
+    <div class="row thumbnails">
+        <div class="col-md-2">
+            <div class="meet-our-team">
+                <h3>Fundação</h3>
+                <div class="team-info">
+                    <p>08/12/1560</p>
                 </div>
             </div>
         </div>
+        <div class="col-md-2">
+            <div class="meet-our-team">
+                <h3>Área</h3>
+                <div class="team-info">
+                    <p>319,19 km²</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="meet-our-team">
+                <h3>Prefeito</h3>
+                <div class="team-info">
+                    <p>Gustavo Henric Costa</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="meet-our-team">
+                <h3>Populalação</h3>
+                <div class="team-info">
+                    <p>1.365.899 habitantes (IBGE/2018)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="meet-our-team">
+                <h3>PIB</h3>
+                <div class="team-info">
+                    <p>R$ 49.392.842 (IBGE/2013)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="portlet light">
+
         <div>
-            <h4 class="profile-desc-title">Outras Informações</h4>
-            <span class="profile-desc-text">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</span>
+            <h4 class="profile-desc-title">Municípios Limítrofes</h4>
+            <span class="profile-desc-text">Mairiporã, Nazaré Paulista, Santa Isabel, Arujá, Itaquaquecetuba, São Paulo</span>
+            <br>
+            <br>
+            <h4 class="profile-desc-title">Curiosidades</h4>
+            <span class="profile-desc-text">
+                •	Guarulhos é a 4° maior cidade de São Paulo em riqueza e 2° em população.
+                •	O aeroporto de Guarulhos iniciou sua operação em 1985, e é atualmente o maior aeroporto do Brasil e o mais movimentado da América Latina, em número de passageiros transportados.
+                •	A cidade é cortada por cinco rodovias muito importantes, e é considerada estratégica para logística e transporte, contando com diversos centros de distribuição
+            </span>
         </div>
     </div>
 
@@ -73,7 +119,8 @@
                 </div>
 
                 <div class="col-md-3 col-sm-2 col-xs-6">
-                    <a href="{{ path('information_city_photos') }}" class="btn btn-circle btn-icon-only blue pull-right">
+                    <a href="{{ path('information_city_photos') }}"
+                       class="btn btn-circle btn-icon-only blue pull-right">
                         <i class="fa fa-photo icon"></i>
                     </a>
                 </div>

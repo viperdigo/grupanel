@@ -13,7 +13,6 @@ class Builder extends ContainerAware
 
         $security = $this->container->get('security.authorization_checker');
 
-
         $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'page-sidebar-menu page-sidebar-menu-hover-submenu1');
         $menu->setChildrenAttribute('data-keep-expanded', 'false');
@@ -125,4 +124,60 @@ class Builder extends ContainerAware
 
         return $menu;
     }
+
+	public function createBreadcrumbMenu(Request $request)
+	{
+		$menu = $this->factory->createItem('root');
+		// this item will always be displayed
+		$menu->addChild('Principal', array('route' => 'home'));
+
+		// create the menu according to the route
+//		switch ($request->get('_route')) {
+//			case 'Acme_create_post':
+//				$menu
+//					->addChild('label.create.post')
+//					->setCurrent(true)// setCurrent is use to add a "current" css class
+//				;
+//				break;
+//			case 'Acme_list_post':
+//				$menu
+//					->addChild('label.list.post')
+//					->setCurrent(true);
+//				break;
+//			case 'Acme_view_post':
+//				$menu->addChild('label.list.post', array(
+//					'route' => 'Acme_list_post'
+//				));
+//
+//				$menu
+//					->addChild('label.view.post')
+//					->setCurrent(true)
+//					->setLabel($request->get('label'))
+//					// the "label" parameter must be passed in your controller
+//					// with $request->attributes->set('label','My label');
+//				;
+//				break;
+//			case 'Acme_add_comment_on_post':
+//				$menu->addChild('label.list.post', array(
+//					'route' => 'Acme_list_post'
+//				));
+//
+//				$menu
+//					->addChild('label.view.post', array(
+//						'route'           => 'Acme_view_post',
+//						'routeParameters' => array('slug' => $request->get('slug'))
+//						/* the "slug" parameter is the placeholder in the route
+//						   Acme_add_comment_on_post. If no placeholder is used, then
+//						   you must use the $request->attributes->set() method
+//						*/
+//					))
+//					->setLabel($request->get('label'));
+//				$menu
+//					->addChild('label.add.comment')
+//					->setCurrent(true);
+//				break;
+//		}
+
+		return $menu;
+	}
 }

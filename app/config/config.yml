@@ -124,6 +124,8 @@ assetic:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        media_directory: %media_directory%
 
     form:
         resources:
