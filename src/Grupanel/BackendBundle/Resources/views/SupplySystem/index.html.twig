@@ -1,0 +1,166 @@
+{% extends '::content.html.twig' %}
+
+{% block pageCss %}
+    <style>
+        .meet-our-team h3 {
+            text-align: center;
+            margin-bottom: 0;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+
+        .meet-our-team small {
+            display: block;
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        .meet-our-team .team-info {
+            text-align: center;
+            padding: 10px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+    </style>
+{% endblock %}
+
+{% block contentTitle %}{{ "Sistema de Abastecimento" }}{% endblock %}
+
+{% block contentBody %}
+
+    <br>
+    <ul class="page-breadcrumb breadcrumb">
+        <li>
+            <a href="{{ path('home') }}">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="{{ path('supply_system') }}">Sistema de Abastecimento</a>
+        </li>
+    </ul>
+
+    <br>
+
+    <div class="portlet light">
+        <div>
+            <h4 class="profile-desc-title">Panorama Atual</h4>
+            <span class="profile-desc-text">Índice de cobertura: 89,2%</span>
+            <br>
+            <br>
+            <h4 class="profile-desc-title"></h4>
+            <span class="profile-desc-text">
+                O sistema de abastecimento de água do município de Guarulhos é constituído por captações de águas superficiais e subterrâneas, estações de tratamento de água, estações elevatórias de água, adutoras, reservatórios, redes de distribuição e ligações de água distribuídas entre 7 setores de abastecimento e 4 centros operacionais. No município atualmente estão operantes as ETAs Cabuçu e Tanque Grande, além de uma ETA compacta, implantada junto ao CR Vila Barros.
+            </span>
+        </div>
+    </div>
+
+    <div class="portlet box blue tabbable">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-map-marker"></i> Mapas
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class=" portlet-tabs">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#portlet_tab1" data-toggle="tab" aria-expanded="false">Mapas com Obras 100 dias</a>
+                    </li>
+                    <li class="">
+                        <a href="#portlet_tab2" data-toggle="tab"
+                           aria-expanded="false">Mapas com Obras 180 dias</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="portlet_tab1"></div>
+                    <div class="tab-pane" id="portlet_tab2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portlet light">
+        <div>
+            <h4 class="profile-desc-title">Extensão de rede de abastecimento</h4>
+            <span class="profile-desc-text">O município conta com aproximadamente 2.300 km de rede de abastecimento, distribuídas entre os polos Gopouva (921 km) e Pimentas (1285 km)</span>
+        </div>
+    </div>
+
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-photo"></i>Fotos Obras
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse" data-original-title="Minimizar/Expandir" title=""></a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="panel-group accordion" id="accordion2">
+                <ul class="mix-filter"></ul>
+
+                <div class="row mix-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="portlet light">
+        <div>
+            <h4 class="profile-desc-title">Rodízio e evolução</h4>
+            <span class="profile-desc-text">
+                Atualmente, existem três padrões de rodízio no município:
+                <br><br>
+                •	16 horas com água e 8 horas sem
+                <br>
+                •	12 horas com água e 12 horas sem
+                <br>
+                •	18 horas com água e 30 horas sem
+                <br><br>
+                Não há rodízio no setor correspondente ao aeroporto.
+            </span>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+    <script>
+        var limpaTabs = function () {
+            $('#portlet_tab1').html('');
+            $('#portlet_tab2').html('');
+        };
+
+        $(function () {
+
+            $('[href="#portlet_tab1"]').on('click', function (e) {
+                limpaTabs();
+                e.preventDefault();
+                $.getJSON('{{ path('information_city_map') }}', {'kmlFile': 'setores_beneficiados.kmz'}, function (data) {
+                    var html = '';
+                    $.each(data, function (key, val) {
+                        html += val
+                    });
+
+                    $('#portlet_tab1').html(html);
+                });
+            });
+
+            $('[href="#portlet_tab2"]').on('click', function (e) {
+                limpaTabs();
+                e.preventDefault();
+                $.getJSON('{{ path('information_city_map') }}', {'kmlFile': 'setores_beneficiados.kmz'}, function (data) {
+                    var html = '';
+                    $.each(data, function (key, val) {
+                        html += val
+                    });
+
+                    $('#portlet_tab2').html(html);
+                });
+            });
+
+            $('[href="#portlet_tab1"]').click();
+        });
+    </script>
+
+{% endblock %}

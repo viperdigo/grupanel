@@ -23,11 +23,4 @@ services:
         arguments:
             - @doctrine.orm.default_entity_manager
             - @service_container
-    grupanel.menu.breadcrumb:
-        class: Knp\Menu\MenuItem
-        factory: ['Grupanel\BackendBundle\Menu\Builder', createBreadcrumbMenu] # the menu builder service above
-        arguments: ["@request"]
-        scope: request
-        tags:
-        - { name: knp_menu.menu, alias: breadcrumb } # The alias is used in the template
 

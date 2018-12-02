@@ -2,20 +2,23 @@
 
 namespace Grupanel\BackendBundle\Controller;
 
-use Ivory\GoogleMap\Base\Coordinate;
+use Ivory\GoogleMap\Control\ControlPosition;
+use Ivory\GoogleMap\Control\MapTypeControl;
+use Ivory\GoogleMap\Control\MapTypeControlStyle;
+use Ivory\GoogleMap\Control\ZoomControl;
+use Ivory\GoogleMap\Control\ZoomControlStyle;
 use Ivory\GoogleMap\Helper\Builder\ApiHelperBuilder;
 use Ivory\GoogleMap\Helper\Builder\MapHelperBuilder;
 use Ivory\GoogleMap\Layer\KmlLayer;
 use Ivory\GoogleMap\Map;
-use Ivory\GoogleMap\Overlay\Marker;
+use Ivory\GoogleMap\MapTypeId;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 /**
  * Information City.
@@ -32,14 +35,32 @@ class InformationCityController extends Controller
 	 */
 	public function indexAction(Request $request)
 	{
+		$photos = $this->getPhotos();
+		return array(
+			'photos' => $photos,
+		);
+
 	}
 
 	/**
-	 * @Route("/photos", name="information_city_photos")
+	 * @Route("/map", name="information_city_map")
 	 * @Method("GET")
-	 * @Template()
 	 */
-	public function photosAction(Request $request)
+	public function createMap(Request $request)
+	{
+		$kmlFile = $request->get('kmlFile');
+		$map = $this->getMap($this->createUrlMap($kmlFile));
+
+		return new JsonResponse($map);
+	}
+
+	private function createUrlMap($nameFile)
+	{
+		$domainMap = 'http://45.55.160.102/grupanel-uploads/maps/';
+		return $domainMap . $nameFile;
+	}
+
+	private function getPhotos()
 	{
 		$appPath = $this->container->getParameter('kernel.root_dir');
 		$informationCityPhotosPath = realpath($appPath . '/../web/bundles/backend/img/information_city_photos');
@@ -51,38 +72,24 @@ class InformationCityController extends Controller
 			$photosPath[] = $file->getRelativePathname();
 		}
 
-		return array(
-			'photos' => $photosPath
-		);
+		return $photosPath;
 	}
 
 	/**
-	 * @Route("/maps", name="information_city_maps")
-	 * @Method("GET")
-	 * @Template()
+	 * @param $url
+	 * @return array
+	 * Example $url: http://45.55.160.102/grupanel-uploads/maps/setor_abastecimento.kmz or setor_abastecimento.kml
 	 */
-	public function mapsAction(Request $request)
+	private function getMap($url)
 	{
-//		$data = file_get_contents("http://45.55.160.102/grupanel-uploads/maps/setor_abastecimento.kmz"); // url of the KMZ file
-//		file_put_contents("/tmp/kmz_temp",$data);
-//		ob_start();
-//		passthru('unzip -p /tmp/kmz_temp');
-//		$xml_data = ob_get_clean();
-//		header("Content-type: text/xml");
-//		echo $xml_data;die;
-
-		$appPath = $this->container->getParameter('kernel.root_dir');
-		$mapsPath = realpath($appPath . '/../web/uploads/maps');
-		$kmlPath = $mapsPath . '/teste.kml';
-
-		$kmlLayer = new KmlLayer('http://45.55.160.102/grupanel-uploads/maps/setor_abastecimento.kmz');
+		$kmlLayer = new KmlLayer($url);
+		$kmlLayer->setUrl($url);
 		$kmlLayer->setVariable('kml_layer');
-//		$kmlLayer->setUrl($kmlFileTest);
 
 		$map = new Map();
 		$map->setStylesheetOptions(array(
 			'height' => '700px',
-			'width' => 'auto',
+			'width'  => 'auto',
 		));
 		$map->getLayerManager()->addKmlLayer($kmlLayer);
 		$mapHelper = MapHelperBuilder::create()->build();
@@ -90,9 +97,25 @@ class InformationCityController extends Controller
 			->setKey('AIzaSyCwYLCJIsEjKBlxh-tdqnyUqzef7nD6egg')
 			->build();
 
+		$mapTypeControl = new MapTypeControl(
+			[MapTypeId::ROADMAP, MapTypeId::TERRAIN],
+			ControlPosition::TOP_RIGHT,
+			MapTypeControlStyle::DEFAULT_
+		);
+
+		$map->getControlManager()->setMapTypeControl($mapTypeControl);
+
+		$zoomControl = new ZoomControl(
+			ControlPosition::TOP_LEFT,
+			ZoomControlStyle::DEFAULT_
+		);
+
+		$map->getControlManager()->setZoomControl($zoomControl);
+
 		return array(
 			'api' => $apiHelper->render(array($map)),
-			'map' => $mapHelper->render($map),
+			'map' => $mapHelper->render($map)
 		);
 	}
+
 }

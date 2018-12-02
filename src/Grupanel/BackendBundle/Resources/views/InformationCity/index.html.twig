@@ -2,20 +2,6 @@
 
 {% block pageCss %}
     <style>
-        .btn-icon-only {
-            height: 100px;
-            width: 100px;
-            text-align: center;
-            font-size: 60px;
-        }
-
-        .btn-icon-only .icon {
-            display: inline;
-            padding-left: 0;
-            padding-right: 0;
-            font-size: 60px;
-        }
-
         .meet-our-team h3 {
             text-align: center;
             margin-bottom: 0;
@@ -39,14 +25,20 @@
     </style>
 {% endblock %}
 
-{% block contentTitle %}{{ "Information City"|trans }}
-
-    {{ knp_menu_render('breadcrumb',{'currentAsLink':false}) }}
-
-{% endblock %}
+{% block contentTitle %}{{ "Information City"|trans }}{% endblock %}
 
 {% block contentBody %}
 
+    <br>
+    <ul class="page-breadcrumb breadcrumb">
+        <li>
+            <a href="{{ path('home') }}">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a href="{{ path('information_city') }}">Informações do Município</a>
+        </li>
+    </ul>
 
     <div class="row thumbnails">
         <div class="col-md-2">
@@ -94,7 +86,6 @@
     <br>
 
     <div class="portlet light">
-
         <div>
             <h4 class="profile-desc-title">Municípios Limítrofes</h4>
             <span class="profile-desc-text">Mairiporã, Nazaré Paulista, Santa Isabel, Arujá, Itaquaquecetuba, São Paulo</span>
@@ -109,23 +100,182 @@
         </div>
     </div>
 
-    <div class="portlet light portlet-fit bordered">
+    <div class="portlet box blue tabbable">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-map-marker"></i> Mapas
+            </div>
+        </div>
         <div class="portlet-body">
-            <div class="row">
-                <div class="col-md-push-5 col-sm-2 col-xs-6">
-                    <a href="{{ path('information_city_maps') }}" class="btn btn-circle btn-icon-only blue pull-right">
-                        <i class="fa fa-map-marker icon"></i>
-                    </a>
-                </div>
-
-                <div class="col-md-3 col-sm-2 col-xs-6">
-                    <a href="{{ path('information_city_photos') }}"
-                       class="btn btn-circle btn-icon-only blue pull-right">
-                        <i class="fa fa-photo icon"></i>
-                    </a>
+            <div class=" portlet-tabs">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#portlet_tab1" data-toggle="tab" aria-expanded="false">Aéreo</a>
+                    </li>
+                    <li class="">
+                        <a href="#portlet_tab2" data-toggle="tab"
+                           aria-expanded="false">Distrito</a>
+                    </li>
+                    <li class="">
+                        <a href="#portlet_tab3" data-toggle="tab" aria-expanded="false">Setor
+                            Abastecimento</a>
+                    </li>
+                    <li class="">
+                        <a href="#portlet_tab4" data-toggle="tab" aria-expanded="false">Sub Bacia
+                            Esgotamento</a>
+                    </li>
+                    <li class="">
+                        <a href="#portlet_tab5" data-toggle="tab" aria-expanded="false">UGR</a>
+                    </li>
+                    <li class="">
+                        <a href="#portlet_tab6" data-toggle="tab" aria-expanded="false">Setores
+                            Beneficiados</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="portlet_tab1"></div>
+                    <div class="tab-pane" id="portlet_tab2"></div>
+                    <div class="tab-pane" id="portlet_tab3"></div>
+                    <div class="tab-pane" id="portlet_tab4"></div>
+                    <div class="tab-pane" id="portlet_tab5"></div>
+                    <div class="tab-pane" id="portlet_tab6"></div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="portlet box blue">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-photo"></i>Fotos
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse" data-original-title="Minimizar/Expandir" title=""></a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="panel-group accordion" id="accordion2">
+                <ul class="mix-filter"></ul>
+
+                <div class="row mix-grid">
+
+                    {% for photo in photos %}
+
+                        <div class="col-md-4 col-sm-4 mix category_1 mix_all"
+                             style="height: 300px; width: 300px; display: block; opacity: 1">
+                            <div class="mix-inner">
+                                <a class="fancybox-button"
+                                   href="{{ asset('bundles/backend/img/information_city_photos/' ~ photo ) }}"
+                                   data-rel="fancybox-button">
+                                    <img class="img-responsive" style="height: 300px; width: 300px;"
+                                         src="{{ asset('bundles/backend/img/information_city_photos/' ~ photo ) }}"
+                                         alt="">
+                                </a>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+    <script>
+        var limpaTabs = function () {
+            $('#portlet_tab1').html('');
+            $('#portlet_tab2').html('');
+            $('#portlet_tab3').html('');
+            $('#portlet_tab4').html('');
+            $('#portlet_tab5').html('');
+            $('#portlet_tab6').html('');
+        };
+
+        $(function () {
+
+            $('[href="#portlet_tab1"]').on('click', function (e) {
+                limpaTabs();
+                e.preventDefault();
+                $.getJSON('{{ path('information_city_map') }}', {'kmlFile': 'guarulhos.kmz'}, function (data) {
+                    var html = '';
+                    $.each(data, function (key, val) {
+                        html += val
+                    });
+
+                    $('#portlet_tab1').html(html);
+                });
+            });
+
+            $('[href="#portlet_tab2"]').on('click', function (e) {
+                limpaTabs();
+                e.preventDefault();
+                $.getJSON('{{ path('information_city_map') }}', {'kmlFile': 'distrito.kmz'}, function (data) {
+                    var html = '';
+                    $.each(data, function (key, val) {
+                        html += val
+                    });
+
+                    $('#portlet_tab2').html(html);
+                });
+            });
+
+            $('[href="#portlet_tab3"]').on('click', function (e) {
+                limpaTabs();
+                e.preventDefault();
+                $.getJSON('{{ path('information_city_map') }}', {'kmlFile': 'setor_abastecimento.kmz'}, function (data) {
+                    var html = '';
+                    $.each(data, function (key, val) {
+                        html += val
+                    });
+
+                    $('#portlet_tab3').html(html);
+                });
+            });
+
+            $('[href="#portlet_tab4"]').on('click', function (e) {
+                limpaTabs();
+                e.preventDefault();
+                $.getJSON('{{ path('information_city_map') }}', {'kmlFile': 'sub_bacia_esgotamento.kmz'}, function (data) {
+                    var html = '';
+                    $.each(data, function (key, val) {
+                        html += val
+                    });
+
+                    $('#portlet_tab4').html(html);
+                });
+            });
+
+            $('[href="#portlet_tab5"]').on('click', function (e) {
+                limpaTabs();
+                e.preventDefault();
+                $.getJSON('{{ path('information_city_map') }}', {'kmlFile': 'ugr.kmz'}, function (data) {
+                    var html = '';
+                    $.each(data, function (key, val) {
+                        html += val
+                    });
+
+                    $('#portlet_tab5').html(html);
+                });
+            });
+
+            $('[href="#portlet_tab6"]').on('click', function (e) {
+                limpaTabs();
+                e.preventDefault();
+                $.getJSON('{{ path('information_city_map') }}', {'kmlFile': 'setores_beneficiados.kmz'}, function (data) {
+                    var html = '';
+                    $.each(data, function (key, val) {
+                        html += val
+                    });
+
+                    $('#portlet_tab6').html(html);
+                });
+            });
+
+            $('[href="#portlet_tab1"]').click();
+        });
+    </script>
 
 {% endblock %}
