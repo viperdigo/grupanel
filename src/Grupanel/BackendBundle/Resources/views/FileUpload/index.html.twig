@@ -4,6 +4,12 @@
 
 {% block contentBody %}
 
-    {% include "PunkAveFileUploaderBundle:Default:templates.html.twig" %}
+    <h1>Adding a new product</h1>
+
+    {{ form_start(form) }}
+    {# ... #}
+
+    {{ form_row(form.name) }}
+    {{ form_end(form) }}
 
 {% endblock %}

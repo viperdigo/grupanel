@@ -50,8 +50,7 @@
     "egeloen/google-map": "^2.0",
     "php-http/guzzle6-adapter": "^1.1",
     "php-http/message": "^1.7",
-    "egeloen/serializer": "^1.0",
-    "punkave/symfony2-file-uploader-bundle": "dev-master"
+    "egeloen/serializer": "^1.0"
   },
   "scripts": {
     "post-install-cmd": [

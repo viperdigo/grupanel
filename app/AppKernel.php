@@ -32,7 +32,7 @@ class AppKernel extends Kernel
             new Grupanel\BackendBundle\BackendBundle(),
             new Grupanel\CoreBundle\CoreBundle(),
 
-            new Filter\FilterBundle\FilterBundle()
+            new Filter\FilterBundle\FilterBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
