@@ -35,7 +35,6 @@ class File
 	/**
 	 * @ORM\ManyToOne(targetEntity="Grupanel\CoreBundle\Entity\FileType")
 	 * @ORM\JoinColumn(name="file_type_id", referencedColumnName="id")
-	 * @Assert\NotBlank()
 	 */
 	private $fileType;
 

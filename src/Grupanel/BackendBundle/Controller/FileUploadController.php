@@ -32,16 +32,26 @@ class FileUploadController extends Controller
 			$fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
 			// moves the file to the directory where brochures are stored
-			$file->move(
-				$this->getParameter('file_uploader.web_base_path'),
+			if ($file->move(
+				$this->getParameter('media_directory'),
 				$fileName
-			);
+			)) {
+				$entityFile->setName($fileName);
 
-			// updates the 'brochure' property to store the PDF file name
-			// instead of its contents
-			$entityFile->setName($fileName);
+				$entityManager = $this->getDoctrine()->getManager();
+				$fileType = $entityManager->find(File::class, 1);
 
-			// ... persist the $product variable or any other work
+				$entityFile->setFileType($fileType);
+				$entityFile->setExtension('xxx');
+
+				$entityManager->persist();
+				$entityManager->flush();
+			}else{
+				$this->get('session')->getFlashBag()->add(
+					'error',
+					'Erro!'
+				);
+			}
 
 			return $this->redirect($this->generateUrl('file_upload'));
 		}
