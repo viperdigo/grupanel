@@ -13,11 +13,11 @@ class FileType extends AbstractType
 	{
 		$builder
 			// ...
-			->add('name', 'file', array('label' => 'TESTE'))
+			->add('name', 'file')
+			->add('fileType')
 			->add('save', 'submit', array(
 				'attr' => array('class' => 'save'),
-			))
-		;
+			));
 	}
 
 	public function configureOptions(OptionsResolver $resolver)

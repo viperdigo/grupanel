@@ -2,6 +2,7 @@
 
 namespace Grupanel\CoreBundle\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -22,7 +23,7 @@ class FileType
     private $id;
 
     /**
-     * @var array
+     * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
@@ -90,7 +91,7 @@ class FileType
 	}
 
 	/**
-	 * @return array
+	 * @return string
 	 */
 	public function getName()
 	{
@@ -98,11 +99,27 @@ class FileType
 	}
 
 	/**
-	 * @param array $name
+	 * @param string $name
 	 */
 	public function setName($name)
 	{
 		$this->name = $name;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getFiles()
+	{
+		return $this->files;
+	}
+
+	/**
+	 * @param mixed $files
+	 */
+	public function setFiles($files)
+	{
+		$this->files = $files;
 	}
 
 	/**
@@ -169,4 +186,8 @@ class FileType
 		$this->updatedId = $updatedId;
 	}
 
+	public function __toString()
+	{
+		return $this->getName();
+	}
 }
